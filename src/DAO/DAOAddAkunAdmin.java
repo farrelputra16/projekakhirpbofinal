@@ -17,7 +17,7 @@ import DAOInterface.InterfaceDAOTambahAkunAdmin;
  */
 public class DAOAddAkunAdmin implements InterfaceDAOTambahAkunAdmin{
     Connection c;
-    String strInsert = "insert into pekerja (id_admin, nama, password) values (?,?,?);";
+    String strInsert = "insert into admin (id_admin, nama, password) values (?,?,?);";
 
     public DAOAddAkunAdmin() {
         c = KoneksiDB.getConnection();

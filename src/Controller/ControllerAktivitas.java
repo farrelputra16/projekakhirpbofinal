@@ -10,6 +10,7 @@ import Model.Aktivitas;
 import Model.Partisipan;
 import Model.TabelPartisipan;
 import View.DetailAktivitas;
+import View.AktivitasAwal;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -22,11 +23,13 @@ import javax.swing.JSpinner;
  */
 public class ControllerAktivitas {
     DetailAktivitas detailA;
+    AktivitasAwal aktivitasA;
     InterfaceDAOActivity ImpDAOAktivitas;
     List<Partisipan> listPrts;
     
-    public ControllerAktivitas(DetailAktivitas detailA) {
+    public ControllerAktivitas(DetailAktivitas detailA, AktivitasAwal aktivitasA) {
         this.detailA = detailA;
+        this.aktivitasA = aktivitasA;
         this.ImpDAOAktivitas = new DAOActivity();
     }
     
@@ -45,6 +48,18 @@ public class ControllerAktivitas {
 
     detailA.gettxtJamSelesai().setValue(new Date());
     ((JSpinner.DefaultEditor) detailA.gettxtJamSelesai().getEditor()).getTextField().setText(aktivitas.getjam_selesai());
+    
+   }
+   
+   public void read_da2() {
+    Aktivitas aktivitas = new Aktivitas();
+    ImpDAOAktivitas.activity(aktivitas);
+    aktivitasA.gettxtNamaAktivitas().setText(aktivitas.getnama_aktivitas());
+    aktivitasA.gettxtJamMulai().setValue(new Date());
+    ((JSpinner.DefaultEditor) aktivitasA.gettxtJamMulai().getEditor()).getTextField().setText(aktivitas.getjam_mulai());
+
+    aktivitasA.gettxtJamSelesai().setValue(new Date());
+    ((JSpinner.DefaultEditor) aktivitasA.gettxtJamSelesai().getEditor()).getTextField().setText(aktivitas.getjam_selesai());
     
    }
 
