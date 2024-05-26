@@ -25,14 +25,16 @@ import java.util.List;
 public class DAOActivity implements InterfaceDAOActivity {
     Connection c;
     String read1 = """
-                   SELECT p.nama_pekerja
-                   FROM activity_participants ap
-                   JOIN pekerja p ON ap.id_pekerja = p.id_pekerja
-                   JOIN activity a ON ap.id_activity = a.id_activity
-                   WHERE ap.id_activity = 1;"""; //ubah lagi bila sudah ada aktivitas
-    String read2 = "SELECT nama_activity, jam_mulai, jam_selesai FROM activity WHERE id_activity = 1;";
-    String Search = "SELECT * FROM activity_participants ap1 JOIN pekerja p ON ap1.id_pekerja = p.id_pekerja JOIN activity_participants ap2 ON ap2.id_partisipan = ap1.id_partisipan WHERE p.nama_pekerja = ?;";
-            
+               SELECT p.nama_pekerja
+               FROM activity_participants ap
+               JOIN pekerja p ON ap.id_pekerja = p.id_pekerja
+               JOIN activity a ON ap.id_activity = a.id_activity
+               WHERE ap.id_activity = ?,
+               ORDER BY nama_pekerja asc;"""; //ubah lagi bila sudah ada aktivitas
+    String read2 = "SELECT nama_activity, jam_mulai, jam_selesai FROM activity WHERE id_activity = ?";
+    String Search = "SELECT * FROM activity_participants ap1 JOIN pekerja p ON ap1.id_pekerja = p.id_pekerja JOIN activity_participants ap2 ON ap2.id_partisipan = ap1.id_partisipan WHERE p.nama_pekerja = ?";
+    String readAktv = "SELECT * FROM activity;";       
+    
     public DAOActivity(){
         c = KoneksiDB.getConnection();
     }
@@ -89,5 +91,26 @@ public class DAOActivity implements InterfaceDAOActivity {
             System.out.println("ERROR!"+ex);
             }
         return listPrts;
+    }
+
+    @Override
+    public List<Aktivitas> getAllAktivitas() {
+       List<Aktivitas> listAktv = null;
+       try{
+            listAktv = new ArrayList<Aktivitas>();
+            Statement st = c.createStatement();
+            ResultSet rs = st.executeQuery(readAktv);
+            while (rs.next()){
+                Aktivitas b = new Aktivitas();
+                b.setid_activity(rs.getInt("nama_pekerja"));
+                b.setnama_aktivitas(rs.getString("nama_pekerja"));
+                b.setjam_mulai(rs.getString("nama_pekerja"));
+                b.setjam_selesai(rs.getString("nama_pekerja"));
+                listAktv.add(b);
+            }
+        } catch (SQLException ex){
+            System.out.println("ERROR!"+ex);
+        }
+        return listAktv;
     }
 }

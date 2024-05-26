@@ -1,12 +1,10 @@
 package Controller;
 
-import DAO.DAOAddAkunPekerja;
 import DAO.DAOLoginPekerja;
 import DAO.DAOPekerja;
 import DAOInterface.InterfaceDAOLoginPekerja;
 import DAOInterface.InterfaceDAOPekerja;
 import Model.Pekerja;
-import View.AddAkunPekerja;
 import View.LoginPage_pekerja;
 import View.dashboardAdmin;
 import javax.swing.JOptionPane;
@@ -14,18 +12,19 @@ import DAOInterface.InterfaceDAOTambahAkunPekerja;
 
 public class ControllerPekerja {
     LoginPage_pekerja pekerjaLogin;
-    AddAkunPekerja AddAkunPkr;
+    dashboardAdmin dashA;
+    InterfaceDAOPekerja IDAOPekerja;
     InterfaceDAOLoginPekerja ImpDAOPekerja;
     InterfaceDAOTambahAkunPekerja IDAOTambahAkunPkr;
 
     public ControllerPekerja(LoginPage_pekerja pekerjaLogin) {
         this.pekerjaLogin = pekerjaLogin;
-        this.ImpDAOPekerja = (InterfaceDAOLoginPekerja) new DAOLoginPekerja();
+        this.ImpDAOPekerja = new DAOLoginPekerja();
     }
     
-    public ControllerPekerja(AddAkunPekerja AddAkunPkr) {
-        this.AddAkunPkr = AddAkunPkr;
-        this.IDAOTambahAkunPkr = (InterfaceDAOTambahAkunPekerja) new DAOAddAkunPekerja();
+    public ControllerPekerja(dashboardAdmin dashA) {
+        this.dashA = dashA;
+        this.IDAOPekerja = new DAOPekerja();
     }
 
     public void login() {
@@ -41,19 +40,33 @@ public class ControllerPekerja {
     
      public void insert(){
         Pekerja pkr = new Pekerja();
-        pkr.setIdPekerja(Integer.parseInt(AddAkunPkr.gettxtIdPekerja().getText()));
-        pkr.setNamaPekerja(AddAkunPkr.gettxtNamaPekerja().getText());
-        boolean rslt = IDAOTambahAkunPkr.insert(pkr);
+        pkr.setIdPekerja(Integer.parseInt(dashA.gettxtIdPekerja().getText()));
+        pkr.setNamaPekerja(dashA.gettxtNamaPekerja().getText());
+        boolean rslt = IDAOPekerja.insertPekerja(pkr);
         if (rslt)
             JOptionPane.showMessageDialog(null, " INPUT SUKSES! ");
         else
             JOptionPane.showMessageDialog(null, " INPUT GAGAL / DATA DUPLIKAT ");
     }
-     
+    
+    public void update(){
+        Pekerja pkr = new Pekerja();
+        pkr.setNamaPekerja(dashA.gettxtNamaPekerja().getText());
+        pkr.setIdPekerja(Integer.parseInt(dashA.gettxtIdPekerja().getText()));
+        IDAOPekerja.updatePekerja(pkr);
+        JOptionPane.showMessageDialog(null, "UPDATE SUKSES!");
+    }
+    
+    public void delete(){
+        Pekerja pkr = new Pekerja();
+        IDAOPekerja.deletePekerja(Integer.parseInt(dashA.gettxtIdPekerja().getText()));
+        JOptionPane.showMessageDialog(null, "HAPUS DATA SUKSES!");
+    }
+    
     public void reset(){
-        if(!AddAkunPkr.gettxtIdPekerja().isEnabled())
-             AddAkunPkr.gettxtIdPekerja().setEnabled(true);
-        AddAkunPkr.gettxtIdPekerja().setText("");
-        AddAkunPkr.gettxtNamaPekerja().setText("");
+        if(!dashA.gettxtIdPekerja().isEnabled())
+             dashA.gettxtIdPekerja().setEnabled(true);
+        dashA.gettxtIdPekerja().setText("");
+        dashA.gettxtNamaPekerja().setText("");
     }
 }

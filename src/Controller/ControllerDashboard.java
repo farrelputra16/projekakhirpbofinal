@@ -29,4 +29,10 @@ public class ControllerDashboard {
         viewAdmin.getTabelPekerja().setModel(tabelPkr);
    }
    
+   public void isiField(int row){
+        //viewAdmin.gettxtID().setEnabled(false);
+        viewAdmin.gettxtIdPekerja().setText(listPkr.get(row).getIdPekerja().toString());
+        viewAdmin.gettxtNamaPekerja().setText(listPkr.get(row).getNamaPekerja());
+    }
+   
 }

@@ -17,4 +17,5 @@ public interface InterfaceDAOActivity {
     List<Partisipan> getAllPartisipan();
     List<Partisipan> searchPartisipan(String namaPekerja);
     void activity(Aktivitas activity);
+    List<Aktivitas>getAllAktivitas();
 }

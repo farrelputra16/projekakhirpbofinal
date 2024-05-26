@@ -11,6 +11,7 @@ import Model.Partisipan;
 import Model.TabelPartisipan;
 import View.DetailAktivitas;
 import View.AktivitasAwal;
+import View.TambahAktivitas;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -24,12 +25,22 @@ import javax.swing.JSpinner;
 public class ControllerAktivitas {
     DetailAktivitas detailA;
     AktivitasAwal aktivitasA;
+    TambahAktivitas AddAktv;
     InterfaceDAOActivity ImpDAOAktivitas;
     List<Partisipan> listPrts;
     
-    public ControllerAktivitas(DetailAktivitas detailA, AktivitasAwal aktivitasA) {
+    public ControllerAktivitas(DetailAktivitas detailA){
         this.detailA = detailA;
+        this.ImpDAOAktivitas = new DAOActivity();
+    }
+    
+    public ControllerAktivitas(AktivitasAwal aktvitasA){
         this.aktivitasA = aktivitasA;
+        this.ImpDAOAktivitas = new DAOActivity();   
+    }
+    
+    public ControllerAktivitas(TambahAktivitas AddAktv){
+        this.AddAktv = AddAktv;
         this.ImpDAOAktivitas = new DAOActivity();
     }
     
