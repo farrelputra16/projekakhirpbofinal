@@ -386,10 +386,10 @@ public class AktivitasAwal extends javax.swing.JFrame {
    public JTextField gettxtNamaAktivitas(){
         return txtNamaAktivitas;
     }
-   public javax.swing.JSpinner gettxtJamMulai() {
+   public JSpinner gettxtJamMulai() {
         return txtJamMulai;
     }
-    public javax.swing.JSpinner gettxtJamSelesai() {
+    public JSpinner gettxtJamSelesai() {
         return txtJamSelesai;
     }
    
