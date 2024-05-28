@@ -275,7 +275,7 @@ public class dashboardPekerja extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDashboardPekerjaActionPerformed
 
     private void btnPerizinanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerizinanActionPerformed
-        // TODO add your handling code here:
+      // TODO add your handling code here:
     }//GEN-LAST:event_btnPerizinanActionPerformed
 
     private void TabelAktivitasPekerjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelAktivitasPekerjaMouseClicked

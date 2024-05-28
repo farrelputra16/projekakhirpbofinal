@@ -103,7 +103,7 @@ public class DAOActivity implements InterfaceDAOActivity {
             while (rs.next()){
                 Aktivitas b = new Aktivitas();
                 b.setid_activity(rs.getInt("id_activity"));
-                b.setnama_aktivitas(rs.getString("nama_aktivitas"));
+                b.setnama_aktivitas(rs.getString("nama_activity"));
                 b.setjam_mulai(rs.getString("jam_mulai"));
                 b.setjam_selesai(rs.getString("jam_selesai"));
                 listAktv.add(b);
