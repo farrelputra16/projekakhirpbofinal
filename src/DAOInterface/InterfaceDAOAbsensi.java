@@ -18,6 +18,6 @@ public interface InterfaceDAOAbsensi {
     List<Aktivitas> getAllAktivitas();
     List<Partisipan> getAllPartisipan(int id_activity);
     Pekerja getPekerjaById(int id_pekerja);
-    boolean addAbsensi(Absensi absensi);
+    boolean addAbsensi(String id_activity, String id_pekerja);
     
 }

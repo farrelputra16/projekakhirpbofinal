@@ -4,11 +4,13 @@
  */
 package View;
 
-import Controller.ControllerDashPekerja;
+import Controller.ControllerAbsensiPekerja;
 import DAO.DAOAbsensi;
 import Model.Partisipan;
 import Model.TabelAktivitas;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
@@ -16,13 +18,18 @@ import javax.swing.JTable;
  * @author A409JB
  */
 public class dashboardPekerja extends javax.swing.JFrame {
-    ControllerDashPekerja ctDsPkr;
+    
+    public static String namaLogin;
+    public static String idLogin;
+    ControllerAbsensiPekerja ctDsPkr;
     /**
      * Creates new form dashboardPekerja
      */
-    public dashboardPekerja() {
+    public dashboardPekerja(String namaLogin, String idLogin){
         initComponents();
-        ctDsPkr =  new ControllerDashPekerja(this);
+        this.namaLogin=namaLogin;
+        this.idLogin=idLogin;
+        ctDsPkr =  new ControllerAbsensiPekerja(this);
         ctDsPkr.IsiTabelAktv();
         
     }
@@ -176,6 +183,11 @@ public class dashboardPekerja extends javax.swing.JFrame {
                 "List Pekerja"
             }
         ));
+        TabelListPartisipan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelListPartisipanMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TabelListPartisipan);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -204,6 +216,11 @@ public class dashboardPekerja extends javax.swing.JFrame {
         btnAbsensi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAbsensi.setForeground(new java.awt.Color(255, 255, 255));
         btnAbsensi.setText("ABSEN");
+        btnAbsensi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbsensiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -266,8 +283,33 @@ public class dashboardPekerja extends javax.swing.JFrame {
         if (row != -1) {
             int idActivity = (int) TabelAktivitasPekerja.getValueAt(row, 0); // Assuming id_activity is in the first column
             System.out.println("ID Aktivitas: " + idActivity);
+            ctDsPkr.IsiTabelPartisipan(idActivity);
         }              
     }//GEN-LAST:event_TabelAktivitasPekerjaMouseClicked
+
+    private void TabelListPartisipanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelListPartisipanMouseClicked
+        int row = TabelListPartisipan.getSelectedRow();
+        if (row != -1) {
+            String namaPekerja = (String) TabelListPartisipan.getValueAt(row, 0); // Assuming id_activity is in the first column
+            System.out.println("Nama yang Dipilih: " + namaPekerja);
+            if (namaPekerja.equals(namaLogin)) {
+                btnAbsensi.setEnabled(true);
+            } else {
+                btnAbsensi.setEnabled(false);
+            }
+        }
+    }//GEN-LAST:event_TabelListPartisipanMouseClicked
+
+    private void btnAbsensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbsensiActionPerformed
+        int selectedRow = TabelAktivitasPekerja.getSelectedRow();
+        if (selectedRow != -1) {
+        String idActivity = TabelAktivitasPekerja.getValueAt(selectedRow, 0).toString();
+        String idPekerja = idLogin; // Ensure loggedInWorkerId is set when the worker logs in
+        ctDsPkr.Absen(idActivity, idPekerja);
+        } else {
+            JOptionPane.showMessageDialog(this, "Silakan pilih aktivitas terlebih dahulu.");
+        }
+    }//GEN-LAST:event_btnAbsensiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,7 +341,7 @@ public class dashboardPekerja extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dashboardPekerja().setVisible(true);
+                new dashboardPekerja(namaLogin,idLogin).setVisible(true);
             }
         });
     }
@@ -323,4 +365,13 @@ public class dashboardPekerja extends javax.swing.JFrame {
     public JTable getTabelAktivitasPekerja(){
         return TabelAktivitasPekerja;
     }
+    
+    public JTable getTabelListPartisipan(){
+        return TabelListPartisipan;
+    }
+    
+    public JButton getBtnAbsensi() {
+        return btnAbsensi;
+    }
+
 }

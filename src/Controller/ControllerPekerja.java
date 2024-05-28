@@ -34,7 +34,7 @@ public class ControllerPekerja {
         boolean isValid = ImpDAOPekerja.login(id, nama);
         if(isValid) {
             // Redirect to dashboard or another view
-            new dashboardPekerja().setVisible(true);
+            new dashboardPekerja(nama,id).setVisible(true);
             pekerjaLogin.dispose();
         }
     }

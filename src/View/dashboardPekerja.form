@@ -294,6 +294,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TabelListPartisipanMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -372,6 +375,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="ABSEN"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbsensiActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

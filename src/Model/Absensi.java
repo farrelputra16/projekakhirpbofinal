@@ -35,7 +35,7 @@ public class Absensi {
         this.id_pekerja = id_pekerja;
     }
     
-    public Integer getiid_activity() {
+    public Integer getid_activity() {
         return id_activity;
     }
 
