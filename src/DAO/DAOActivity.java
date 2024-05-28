@@ -5,7 +5,7 @@
 package DAO;
 
 import DAOInterface.InterfaceDAOActivity;
-import Helper.KoneksiDB;
+import Connector.KoneksiDB;
 import Model.Aktivitas;
 import Model.Partisipan;
 import Model.Pekerja;
@@ -45,8 +45,8 @@ public class DAOActivity implements InterfaceDAOActivity {
         List<Partisipan> listPrts = null;
         try{
             listPrts = new ArrayList<Partisipan>();
-            Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery(read1);
+            PreparedStatement st = c.prepareStatement(read1);
+            ResultSet rs = st.executeQuery();
             while (rs.next()){
                 Partisipan b = new Partisipan();
                 b.setnamaPekerja(rs.getString("nama_pekerja"));
@@ -62,8 +62,8 @@ public class DAOActivity implements InterfaceDAOActivity {
     public void activity(Aktivitas activity) {
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         try{
-            Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery(read2);
+            PreparedStatement st = c.prepareStatement(read2);
+            ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 activity.setnama_aktivitas(rs.getString("nama_activity"));
                 activity.setjam_mulai(sdf.format(rs.getTime("jam_mulai")));

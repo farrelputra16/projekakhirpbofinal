@@ -4,7 +4,7 @@
  */
 package DAO;
 
-import Helper.KoneksiDB;
+import Connector.KoneksiDB;
 import Model.Pekerja;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -337,7 +337,7 @@ public class dashboardAdmin extends javax.swing.JFrame {
     // TODO add your handling code here:
 
     private void btnAktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAktivitasActionPerformed
-        AktivitasAwal Aa =  new AktivitasAwal();
+        TambahAktivitas Aa =  new TambahAktivitas();
         Aa.setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_btnAktivitasActionPerformed

@@ -1,7 +1,7 @@
 package DAO;
 
 import DAOInterface.InterfaceDAOAbsensi;
-import Helper.KoneksiDB;
+import Connector.KoneksiDB;
 import Model.Absensi;
 import Model.Aktivitas;
 import Model.Partisipan;

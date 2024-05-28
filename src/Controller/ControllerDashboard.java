@@ -4,6 +4,7 @@ import DAO.DAOPekerja;
 import DAOInterface.InterfaceDAOPekerja;
 import Model.Pekerja;
 import Model.TabelPekerja;
+import View.TambahAktivitas;
 import View.dashboardAdmin;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class ControllerDashboard {
     dashboardAdmin viewAdmin;
     InterfaceDAOPekerja IDAOPekerja;
     List<Pekerja> listPkr;
+    TambahAktivitas viewAddAktv;
 
    public ControllerDashboard(dashboardAdmin viewAdmin){
        this.viewAdmin = viewAdmin;

@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import Helper.KoneksiDB;
+import Connector.KoneksiDB;
 import Model.Admin;
 import DAOInterface.InterfaceDAOLoginAdmin;
 

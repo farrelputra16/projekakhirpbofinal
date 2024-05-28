@@ -5,6 +5,7 @@
 package View;
 
 import Controller.ControllerAktivitas;
+import Controller.ControllerTambahAktivitas;
 import View.Accounts;
 import View.dashboardAdmin;
 import controller.ControllerDashboard;
@@ -19,15 +20,17 @@ import javax.swing.JTextField;
 public class TambahAktivitas extends javax.swing.JFrame {
     
     ControllerAktivitas ctAktv;
-    ControllerDashboard ctDs;
+    ControllerTambahAktivitas ctDsTa;
     /**
      * Creates new form DetailAktivitas
      */
     public TambahAktivitas() {
         initComponents();
         ctAktv = new ControllerAktivitas(this);
-        ctAktv.isiTabelPartisipan();
-        ctAktv.read_da();
+        ctDsTa = new ControllerTambahAktivitas(this);
+        ctDsTa.isiTabelPekerja();
+        ctDsTa.isiTabelPartisipan();
+        //ctDsTa.read_da();
     }
 
     /**
@@ -68,6 +71,8 @@ public class TambahAktivitas extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -258,10 +263,10 @@ public class TambahAktivitas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TabelListPartisipan);
 
-        jButton1.setBackground(new java.awt.Color(63, 81, 181));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(102, 120, 217));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SIMPAN");
+        jButton1.setText("Tambah Pekerja");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,6 +293,11 @@ public class TambahAktivitas extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabelPekerja);
 
         txtNamaPekerja.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNamaPekerja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNamaPekerjaActionPerformed(evt);
+            }
+        });
 
         txtIdPekerja.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtIdPekerja.addActionListener(new java.awt.event.ActionListener() {
@@ -304,6 +314,15 @@ public class TambahAktivitas extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel10.setText("Tekan Nama Pekerja yang Ingin Dimasukkan ke List Aktivitas");
+
+        jButton2.setBackground(new java.awt.Color(63, 81, 181));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("SIMPAN AKTIVITAS");
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel11.setText("Tekan Tombol Ini Jika Sudah Selesai Mengatur Aktivitas Baru");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -354,8 +373,17 @@ public class TambahAktivitas extends javax.swing.JFrame {
                                         .addGap(28, 28, 28))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(145, 145, 145))))))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(127, 127, 127))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(323, 323, 323)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(258, 258, 258)
+                                .addComponent(jLabel11)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +397,7 @@ public class TambahAktivitas extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTambahnamaaktivitas, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,9 +416,13 @@ public class TambahAktivitas extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1))
-                .addGap(0, 34, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 140, Short.MAX_VALUE))
         );
 
         pack();
@@ -401,7 +433,7 @@ public class TambahAktivitas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCariPekerjaActionPerformed
 
     private void btnCariPekerjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPekerjaActionPerformed
-        ctAktv.search_partisipan();// TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_btnCariPekerjaActionPerformed
 
     private void txtTambahnamaaktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTambahnamaaktivitasActionPerformed
@@ -426,7 +458,7 @@ public class TambahAktivitas extends javax.swing.JFrame {
 
     private void tabelPekerjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelPekerjaMouseClicked
         int row = tabelPekerja.getSelectedRow();
-        ctDs.isiField(row);        // TODO add your handling code here:
+        ctDsTa.isiField(row);        // TODO add your handling code here:
     }//GEN-LAST:event_tabelPekerjaMouseClicked
 
     private void txtIdPekerjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdPekerjaActionPerformed
@@ -436,6 +468,10 @@ public class TambahAktivitas extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtNamaPekerjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaPekerjaActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_txtNamaPekerjaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -480,8 +516,10 @@ public class TambahAktivitas extends javax.swing.JFrame {
     private javax.swing.JButton btnCariPekerja;
     private javax.swing.JButton btnDashboardAdmin;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -523,5 +561,17 @@ public class TambahAktivitas extends javax.swing.JFrame {
     
     public JTextField gettxtCariPekerja(){
         return txtCariPekerja;
+    }
+    
+    public JTable gettabelPekerja(){
+        return tabelPekerja;
+    }
+    
+    public JTextField gettxtIdPekerja(){
+        return txtIdPekerja;
+    }
+    
+    public JTextField gettxtNamaPekerja(){
+        return txtNamaPekerja;
     }
 }

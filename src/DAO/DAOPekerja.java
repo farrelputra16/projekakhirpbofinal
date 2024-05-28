@@ -1,7 +1,7 @@
 package DAO;
 
 import DAOInterface.InterfaceDAOPekerja;
-import Helper.KoneksiDB;
+import Connector.KoneksiDB;
 import Model.Pekerja;
 import java.sql.*;
 import java.util.ArrayList;
