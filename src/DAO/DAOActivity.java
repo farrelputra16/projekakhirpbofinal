@@ -39,7 +39,6 @@ public class DAOActivity implements InterfaceDAOActivity {
         c = KoneksiDB.getConnection();
     }
     
-    
     @Override
     public List<Partisipan> getAllPartisipan() {
         List<Partisipan> listPrts = null;

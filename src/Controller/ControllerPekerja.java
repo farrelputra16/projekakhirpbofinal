@@ -6,7 +6,6 @@ import DAOInterface.InterfaceDAOLoginPekerja;
 import DAOInterface.InterfaceDAOPekerja;
 import Model.Pekerja;
 import View.LoginPage_pekerja;
-import View.PerizinanPekerja;
 import View.dashboardAdmin;
 import javax.swing.JOptionPane;
 import View.dashboardPekerja;
@@ -35,7 +34,6 @@ public class ControllerPekerja {
             // Redirect to dashboard or another view
             new dashboardPekerja(nama,id).setVisible(true);
             pekerjaLogin.dispose();
-            new PerizinanPekerja(nama,id);
         }
     }
     

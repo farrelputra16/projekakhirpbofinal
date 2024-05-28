@@ -8,8 +8,6 @@ import Controller.ControllerAbsensiPekerja;
 import DAO.DAOAbsensi;
 import Model.Partisipan;
 import Model.TabelAktivitas;
-import static View.PerizinanPekerja.idPerizinan;
-import static View.PerizinanPekerja.namaPerizinan;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -47,7 +45,6 @@ public class dashboardPekerja extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         btnDashboardPekerja = new javax.swing.JButton();
-        btnPerizinan = new javax.swing.JButton();
         panel1 = new java.awt.Panel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -72,16 +69,6 @@ public class dashboardPekerja extends javax.swing.JFrame {
         btnDashboardPekerja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDashboardPekerjaActionPerformed(evt);
-            }
-        });
-
-        btnPerizinan.setBackground(new java.awt.Color(63, 81, 181));
-        btnPerizinan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnPerizinan.setForeground(new java.awt.Color(255, 255, 255));
-        btnPerizinan.setText("PERIZINAN");
-        btnPerizinan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerizinanActionPerformed(evt);
             }
         });
 
@@ -117,8 +104,7 @@ public class dashboardPekerja extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDashboardPekerja, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                    .addComponent(btnPerizinan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDashboardPekerja, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -128,8 +114,6 @@ public class dashboardPekerja extends javax.swing.JFrame {
                 .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(btnDashboardPekerja)
-                .addGap(18, 18, 18)
-                .addComponent(btnPerizinan)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -276,14 +260,6 @@ public class dashboardPekerja extends javax.swing.JFrame {
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btnDashboardPekerjaActionPerformed
 
-    private void btnPerizinanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerizinanActionPerformed
-        this.namaLogin=namaPerizinan;
-        this.idLogin=idPerizinan;
-        PerizinanPekerja Pp = new PerizinanPekerja(namaPerizinan,idPerizinan);
-        Pp.setVisible(true);
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_btnPerizinanActionPerformed
-
     private void TabelAktivitasPekerjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelAktivitasPekerjaMouseClicked
         int row = TabelAktivitasPekerja.getSelectedRow();
         if (row != -1) {
@@ -358,7 +334,6 @@ public class dashboardPekerja extends javax.swing.JFrame {
     private javax.swing.JTable TabelListPartisipan;
     private javax.swing.JButton btnAbsensi;
     private javax.swing.JButton btnDashboardPekerja;
-    private javax.swing.JButton btnPerizinan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
