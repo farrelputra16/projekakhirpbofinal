@@ -313,7 +313,9 @@ public class AktivitasAwal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDashboardAdminActionPerformed
 
     private void btnTambahAktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahAktivitasActionPerformed
-        // TODO add your handling code here:
+        TambahAktivitas Ta = new TambahAktivitas();
+        Ta.setVisible(true);
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_btnTambahAktivitasActionPerformed
 
     private void btnDetailAktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailAktivitasActionPerformed

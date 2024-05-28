@@ -337,8 +337,8 @@ public class dashboardAdmin extends javax.swing.JFrame {
     // TODO add your handling code here:
 
     private void btnAktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAktivitasActionPerformed
-        DetailAktivitas da =  new DetailAktivitas();
-        da.setVisible(true);
+        AktivitasAwal Aa =  new AktivitasAwal();
+        Aa.setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_btnAktivitasActionPerformed
 
@@ -354,17 +354,20 @@ public class dashboardAdmin extends javax.swing.JFrame {
 
     private void btnEditPekerjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPekerjaActionPerformed
         ctPkr.update();
-        ctPkr.reset();// TODO add your handling code here:
+        ctPkr.reset();
+        ctDs.isiTabel();// TODO add your handling code here:
     }//GEN-LAST:event_btnEditPekerjaActionPerformed
 
     private void btnSavePekerja1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavePekerja1ActionPerformed
         ctPkr.insert();
-        ctPkr.reset();// TODO add your handling code here:
+        ctPkr.reset();
+        ctDs.isiTabel();// TODO add your handling code here:
     }//GEN-LAST:event_btnSavePekerja1ActionPerformed
 
     private void btnDeletePekerjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePekerjaActionPerformed
         ctPkr.delete();
-        ctPkr.reset();        // TODO add your handling code here:
+        ctPkr.reset(); 
+        ctDs.isiTabel();// TODO add your handling code here:
     }//GEN-LAST:event_btnDeletePekerjaActionPerformed
 
     private void tabelPekerjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelPekerjaMouseClicked

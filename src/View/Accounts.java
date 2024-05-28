@@ -217,8 +217,8 @@ public class Accounts extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAktivitasActionPerformed
-        DetailAktivitas da =  new DetailAktivitas();
-        da.setVisible(true);
+        AktivitasAwal Aa =  new AktivitasAwal();
+        Aa.setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_btnAktivitasActionPerformed
 

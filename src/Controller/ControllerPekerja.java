@@ -9,6 +9,7 @@ import View.LoginPage_pekerja;
 import View.dashboardAdmin;
 import javax.swing.JOptionPane;
 import DAOInterface.InterfaceDAOTambahAkunPekerja;
+import View.dashboardPekerja;
 
 public class ControllerPekerja {
     LoginPage_pekerja pekerjaLogin;
@@ -33,14 +34,14 @@ public class ControllerPekerja {
         boolean isValid = ImpDAOPekerja.login(id, nama);
         if(isValid) {
             // Redirect to dashboard or another view
-            new dashboardAdmin().setVisible(true);
+            new dashboardPekerja().setVisible(true);
             pekerjaLogin.dispose();
         }
     }
     
      public void insert(){
         Pekerja pkr = new Pekerja();
-        pkr.setIdPekerja(Integer.parseInt(dashA.gettxtIdPekerja().getText()));
+        pkr.setIdPekerja(Integer.valueOf(dashA.gettxtIdPekerja().getText()));
         pkr.setNamaPekerja(dashA.gettxtNamaPekerja().getText());
         boolean rslt = IDAOPekerja.insertPekerja(pkr);
         if (rslt)

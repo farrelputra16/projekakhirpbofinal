@@ -184,13 +184,13 @@ public class dashboardPekerja extends javax.swing.JFrame {
         TabelAktivitasPekerja.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         TabelAktivitasPekerja.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nama Aktivitas", "Jam Mulai", "Jam Selesai"
+                "No.", "Nama Aktivitas", "Jam Mulai", "Jam Selesai"
             }
         ));
         TabelAktivitasPekerja.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -262,7 +262,11 @@ public class dashboardPekerja extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPerizinanActionPerformed
 
     private void TabelAktivitasPekerjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelAktivitasPekerjaMouseClicked
-              // TODO add your handling code here:
+        int row = TabelAktivitasPekerja.getSelectedRow();
+        if (row != -1) {
+            int idActivity = (int) TabelAktivitasPekerja.getValueAt(row, 0); // Assuming id_activity is in the first column
+            System.out.println("ID Aktivitas: " + idActivity);
+        }              
     }//GEN-LAST:event_TabelAktivitasPekerjaMouseClicked
 
     /**

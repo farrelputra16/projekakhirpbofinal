@@ -102,10 +102,10 @@ public class DAOActivity implements InterfaceDAOActivity {
             ResultSet rs = st.executeQuery(readAktv);
             while (rs.next()){
                 Aktivitas b = new Aktivitas();
-                b.setid_activity(rs.getInt("nama_pekerja"));
-                b.setnama_aktivitas(rs.getString("nama_pekerja"));
-                b.setjam_mulai(rs.getString("nama_pekerja"));
-                b.setjam_selesai(rs.getString("nama_pekerja"));
+                b.setid_activity(rs.getInt("id_activity"));
+                b.setnama_aktivitas(rs.getString("nama_aktivitas"));
+                b.setjam_mulai(rs.getString("jam_mulai"));
+                b.setjam_selesai(rs.getString("jam_selesai"));
                 listAktv.add(b);
             }
         } catch (SQLException ex){

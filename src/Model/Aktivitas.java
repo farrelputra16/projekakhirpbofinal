@@ -41,7 +41,7 @@ public class Aktivitas {
     }
 
     /**
-     * @param jam_mulai the id to set
+     * @param jam_mulai the string to set
      */
     public void setjam_mulai(String jam_mulai) {
         this.jam_mulai = jam_mulai;
@@ -52,7 +52,7 @@ public class Aktivitas {
     }
 
     /**
-     * @param jam_selesai the id to set
+     * @param jam_selesai the string to set
      */
     public void setjam_selesai(String jam_selesai) {
         this.jam_selesai = jam_selesai;
