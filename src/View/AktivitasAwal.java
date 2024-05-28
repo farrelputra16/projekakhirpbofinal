@@ -4,9 +4,10 @@
  */
 package View;
 
-import Controller.ControllerAktivitas;
+import Controller.ControllerAktivitasAwal;
 import View.Accounts;
 import View.dashboardAdmin;
+import Model.TabelAktivitas;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -17,14 +18,14 @@ import javax.swing.JTextField;
  */
 public class AktivitasAwal extends javax.swing.JFrame {
     
-    ControllerAktivitas ctAktv;
+    ControllerAktivitasAwal ctAktva;
     /**
      * Creates new form DetailAktivitas
      */
     public AktivitasAwal() {
         initComponents();
-        ctAktv = new ControllerAktivitas(this);
-        ctAktv.read_da2();
+        ctAktva = new ControllerAktivitasAwal(this);
+        ctAktva.IsiTabel();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,12 +47,8 @@ public class AktivitasAwal extends javax.swing.JFrame {
         panel2 = new java.awt.Panel();
         btnCariPekerja = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        btnDetailAktivitas = new javax.swing.JButton();
-        txtJamMulai = new javax.swing.JSpinner();
-        txtJamSelesai = new javax.swing.JSpinner();
-        txtNamaAktivitas = new javax.swing.JTextField();
-        btnTambahAktivitas = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TabelAktivitasPekerja = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,7 +133,7 @@ public class AktivitasAwal extends javax.swing.JFrame {
                 .addComponent(btnAktivitas)
                 .addGap(18, 18, 18)
                 .addComponent(btnAkunProfil)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(561, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -180,7 +177,7 @@ public class AktivitasAwal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addComponent(btnCariPekerja, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCariPekerja, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,60 +198,24 @@ public class AktivitasAwal extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        btnDetailAktivitas.setBackground(new java.awt.Color(63, 81, 181));
-        btnDetailAktivitas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDetailAktivitas.setForeground(new java.awt.Color(255, 255, 255));
-        btnDetailAktivitas.setText("Detail");
-        btnDetailAktivitas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetailAktivitasActionPerformed(evt);
+        TabelAktivitasPekerja.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TabelAktivitasPekerja.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "No.", "Nama Aktivitas", "Jam Mulai", "Jam Selesai"
+            }
+        ));
+        TabelAktivitasPekerja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelAktivitasPekerjaMouseClicked(evt);
             }
         });
-
-        txtNamaAktivitas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNamaAktivitasActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(txtNamaAktivitas, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(txtJamMulai, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
-                .addComponent(txtJamSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(131, 131, 131)
-                .addComponent(btnDetailAktivitas, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDetailAktivitas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtJamSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtJamMulai, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNamaAktivitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
-        );
-
-        btnTambahAktivitas.setBackground(new java.awt.Color(63, 81, 181));
-        btnTambahAktivitas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnTambahAktivitas.setForeground(new java.awt.Color(255, 255, 255));
-        btnTambahAktivitas.setText("ADD ACTIVITY");
-        btnTambahAktivitas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTambahAktivitasActionPerformed(evt);
-            }
-        });
+        jScrollPane2.setViewportView(TabelAktivitasPekerja);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -262,15 +223,11 @@ public class AktivitasAwal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnTambahAktivitas, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -278,11 +235,9 @@ public class AktivitasAwal extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(btnTambahAktivitas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 527, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
 
         pack();
@@ -312,21 +267,14 @@ public class AktivitasAwal extends javax.swing.JFrame {
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btnDashboardAdminActionPerformed
 
-    private void btnTambahAktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahAktivitasActionPerformed
-        TambahAktivitas Ta = new TambahAktivitas();
-        Ta.setVisible(true);
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_btnTambahAktivitasActionPerformed
-
-    private void btnDetailAktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailAktivitasActionPerformed
-        DetailAktivitas detailakt =  new DetailAktivitas();
-        detailakt.setVisible(true);
-        this.dispose(); // TODO add your handling code here:
-    }//GEN-LAST:event_btnDetailAktivitasActionPerformed
-
-    private void txtNamaAktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaAktivitasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamaAktivitasActionPerformed
+    private void TabelAktivitasPekerjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelAktivitasPekerjaMouseClicked
+        int row = TabelAktivitasPekerja.getSelectedRow();
+        if (row != -1) {
+            int idActivity = (int) TabelAktivitasPekerja.getValueAt(row, 0); // Assuming id_activity is in the first column
+            System.out.println("ID Aktivitas: " + idActivity);
+            ctAktva.IsiTabel();
+        }
+    }//GEN-LAST:event_TabelAktivitasPekerjaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -367,32 +315,23 @@ public class AktivitasAwal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TabelAktivitasPekerja;
     private javax.swing.JButton btnAktivitas;
     private javax.swing.JButton btnAkunProfil;
     private javax.swing.JButton btnCariPekerja;
     private javax.swing.JButton btnDashboardAdmin;
-    private javax.swing.JButton btnDetailAktivitas;
-    private javax.swing.JButton btnTambahAktivitas;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
     private javax.swing.JTextField txtCariPekerja;
-    private javax.swing.JSpinner txtJamMulai;
-    private javax.swing.JSpinner txtJamSelesai;
-    private javax.swing.JTextField txtNamaAktivitas;
     // End of variables declaration//GEN-END:variables
-   public JTextField gettxtNamaAktivitas(){
-        return txtNamaAktivitas;
+   public JTable getTabelAktivitasPekerja(){
+        return TabelAktivitasPekerja;
     }
-   public JSpinner gettxtJamMulai() {
-        return txtJamMulai;
-    }
-    public JSpinner gettxtJamSelesai() {
-        return txtJamSelesai;
-    }
+
    
 }
