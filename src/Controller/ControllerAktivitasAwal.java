@@ -26,10 +26,12 @@ public class ControllerAktivitasAwal {
     InterfaceDAOActivity ImpDAOAktivitas;
     List<Partisipan> listPrts;
     List<Aktivitas> ListAktv;
-    
+    private int activityId;
+
     public ControllerAktivitasAwal(AktivitasAwal AktivitasA){
         this.AktivitasA = AktivitasA;
         this.ImpDAOAktivitas = new DAOActivity();
+        this.activityId = activityId;
     }
     public void IsiTabel(){
         ListAktv = ImpDAOAktivitas.getAllAktivitas();

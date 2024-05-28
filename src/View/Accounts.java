@@ -4,17 +4,23 @@
  */
 package View;
 
+import Controller.ControllerAdmin;
+import javax.swing.JTable;
+
+
 /**
  *
  * @author A409JB
  */
 public class Accounts extends javax.swing.JFrame {
-
+    ControllerAdmin ctAdm;
     /**
      * Creates new form Accounts
      */
     public Accounts() {
         initComponents();
+        ctAdm = new ControllerAdmin(this);
+        ctAdm.isiTabel();
     }
 
     /**
@@ -36,7 +42,7 @@ public class Accounts extends javax.swing.JFrame {
         panel1 = new java.awt.Panel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TabelAdmin = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -165,7 +171,7 @@ public class Accounts extends javax.swing.JFrame {
                 .addContainerGap(434, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -176,10 +182,10 @@ public class Accounts extends javax.swing.JFrame {
                 "List Admin"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TabelAdmin);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("ADMIN");
+        jLabel2.setText("DAFTAR ADMIN DI PERUSAHAAN INI");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,15 +197,13 @@ public class Accounts extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(19, 19, 19))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0))))
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel2))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,6 +272,7 @@ public class Accounts extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TabelAdmin;
     private javax.swing.JButton btnAktivitas;
     private javax.swing.JButton btnAkunProfil;
     private javax.swing.JButton btnDashboardAdmin;
@@ -277,8 +282,10 @@ public class Accounts extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
     // End of variables declaration//GEN-END:variables
+    public JTable getTabelAdmin(){
+        return TabelAdmin;
+    }
 }

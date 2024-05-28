@@ -10,8 +10,10 @@ package Model;
  */
 public class Perizinan {
     private Integer id_izin;
-    private Integer id_pekerja;
-    private Integer id_activity;
+    public Integer id_pekerja;
+    public String deskripsi;
+    public Integer id_activity;
+    
     public Integer getid_izin() {
         return id_izin;
     }
@@ -43,5 +45,16 @@ public class Perizinan {
      */
     public void setid_activity(Integer id_activity) {
         this.id_activity = id_activity;
+    }
+    
+    public String getdeskripsi() {
+        return deskripsi;
+    }
+
+    /**
+     * @param id_activity the id to set
+     */
+    public void setdeskripsi(String desekripsi) {
+        this.deskripsi = deskripsi;
     }
 }

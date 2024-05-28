@@ -54,7 +54,7 @@ public class PerizinanPekerja extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtDeskripsi = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         btnPerizinan = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -163,18 +163,17 @@ public class PerizinanPekerja extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel2)))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2)
                 .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -186,9 +185,9 @@ public class PerizinanPekerja extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Aktivitas");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtDeskripsi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtDeskripsiActionPerformed(evt);
             }
         });
 
@@ -270,7 +269,7 @@ public class PerizinanPekerja extends javax.swing.JFrame {
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(282, 282, 282))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDeskripsi, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(96, 96, 96))))))
         );
         layout.setVerticalGroup(
@@ -287,7 +286,7 @@ public class PerizinanPekerja extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDeskripsi, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnPerizinan, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -318,15 +317,15 @@ public class PerizinanPekerja extends javax.swing.JFrame {
         if (selectedRow != -1) {
         String idActivity = TabelAktivitasPekerja.getValueAt(selectedRow, 0).toString();
         String idPekerja = idPerizinan; // Ensure loggedInWorkerId is set when the worker logs in
-        ctDPerzn.Perizinan(idActivity, idPekerja);
+        ctDPerzn.Perizinan();
         } else {
             JOptionPane.showMessageDialog(this, "Silakan pilih aktivitas terlebih dahulu.");
         } // TODO add your handling code here:
     }//GEN-LAST:event_btnPerizinanActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void txtDeskripsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeskripsiActionPerformed
+        btnPerizinan.setEnabled(true);    // TODO add your handling code here:
+    }//GEN-LAST:event_txtDeskripsiActionPerformed
 
     private void TabelAktivitasPekerjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelAktivitasPekerjaMouseClicked
         int row = TabelAktivitasPekerja.getSelectedRow();
@@ -342,11 +341,6 @@ public class PerizinanPekerja extends javax.swing.JFrame {
         if (row != -1) {
             String namaPekerja = (String) TabelListPartisipan.getValueAt(row, 0); // Assuming id_activity is in the first column
             System.out.println("Nama yang Dipilih: " + namaPekerja);
-            if (namaPekerja.equals(namaPerizinan)) {
-                btnPerizinan.setEnabled(true);
-            } else {
-                btnPerizinan.setEnabled(false);
-            }
         }
     }//GEN-LAST:event_TabelListPartisipanMouseClicked
 
@@ -402,9 +396,9 @@ public class PerizinanPekerja extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
+    private javax.swing.JTextField txtDeskripsi;
     // End of variables declaration//GEN-END:variables
     
     public JTable gettabelAktivitasPekerja(){
@@ -417,5 +411,9 @@ public class PerizinanPekerja extends javax.swing.JFrame {
      public JButton getBtnPerizinan() {
         return btnPerizinan;
     }
+     
+     public JTextField gettxtDeskripsi(){
+         return txtDeskripsi;
+     }
 
 }

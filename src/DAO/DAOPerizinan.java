@@ -28,8 +28,8 @@ public class DAOPerizinan implements InterfaceDAOPerizinan {
                JOIN pekerja p ON ap.id_pekerja = p.id_pekerja
                JOIN activity a ON ap.id_activity = a.id_activity
                WHERE ap.id_activity=?;""";
-    String read_2 = "SELECT * FROM activity where id_pekerja=?";
-    String Insert = "INSERT INTO perizinan (id_activity, id_pekerj VALUES (?, ?)";
+    String read_2 = "SELECT * FROM activity where id_pekerja=?;";
+    String Insert = "INSERT INTO perizinan (id_pekerja, deskripsi, id_activity) VALUES (?, ?);";
     String readAktv = "SELECT * FROM activity;"; 
     String read_3 = "SELECT * FROM activity_participants WHERE id_pekerja=?;";
 
@@ -73,18 +73,20 @@ public class DAOPerizinan implements InterfaceDAOPerizinan {
     }
 
     @Override
-    public boolean addPerizinan(String idActivity, String idPekerja) {
-
+    public boolean addPerizinan(Perizinan b) {
+        boolean result = true;
+        PreparedStatement statement = null;
         try {
-            PreparedStatement ps = c.prepareStatement(Insert);
-            ps.setString(1, idActivity);
-            ps.setString(2, idPekerja);
-            int rowsInserted = ps.executeUpdate();
-            return rowsInserted > 0;
+            statement = c.prepareStatement(Insert);
+            statement.setInt(1, b.id_activity);
+            statement.setInt(2, b.id_pekerja);
+            statement.setString(3, b.deskripsi);
+            statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
+        return false;
     }
     
     @Override

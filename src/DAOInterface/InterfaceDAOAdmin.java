@@ -9,9 +9,10 @@ package DAOInterface;
  * @author A409JB
  */
 import Model.Admin;
+import java.util.List;
 
 public interface InterfaceDAOAdmin {
     boolean login(String id, String password);
-    
+    List<Admin> getAllAdmin();
 }
 

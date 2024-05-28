@@ -1,29 +1,31 @@
 package Controller;
 
-import View.AddAkunAdmin;
+
 import View.LoginPage_admin;
 import View.dashboardAdmin;
-import DAO.DAOAddAkunAdmin;
 import DAO.DAOAdmin;
 import DAOInterface.InterfaceDAOAdmin;
 import Model.Admin;
+import Model.TabelAdmin;
+import View.Accounts;
+import java.util.List;
 import javax.swing.JOptionPane;
-import DAOInterface.InterfaceDAOTambahAkunAdmin;
 
 public class ControllerAdmin {
-    AddAkunAdmin AddAkunAdm;
+   
     LoginPage_admin adminLogin;
     InterfaceDAOAdmin ImpDAOAdmin;
-    private InterfaceDAOTambahAkunAdmin IDAOTambahAkunAdm;
+    List<Admin> listAdm;
+    Accounts Akuns;
 
     public ControllerAdmin(LoginPage_admin adminLogin) {
         this.adminLogin = adminLogin;
         this.ImpDAOAdmin = new DAOAdmin();
     }
     
-    public ControllerAdmin(AddAkunAdmin AddAkunAdm) {
-        this.AddAkunAdm = AddAkunAdm;
-        this.IDAOTambahAkunAdm = (InterfaceDAOTambahAkunAdmin) new DAOAddAkunAdmin();
+    public ControllerAdmin(Accounts Akuns) {
+        this.Akuns = Akuns;
+        this.ImpDAOAdmin = new DAOAdmin();
     }
 
     public void login() {
@@ -36,15 +38,10 @@ public class ControllerAdmin {
             adminLogin.dispose();
         }
     }
-         public void insert(){
-        Admin adm = new Admin();
-        adm.setid_admin(Integer.valueOf(AddAkunAdm.gettxtIdAdmin().getText()));
-        adm.setnama(AddAkunAdm.gettxtNamaAdmin().getText());
-        adm.setpassword(AddAkunAdm.gettxtPwAdmin().getText());
-        boolean rslt = IDAOTambahAkunAdm.insert(adm);
-        if (rslt)
-            JOptionPane.showMessageDialog(null, " INPUT SUKSES! ");
-        else
-            JOptionPane.showMessageDialog(null, " INPUT GAGAL / DATA DUPLIKAT ");
+    
+    public void isiTabel(){
+       listAdm = ImpDAOAdmin.getAllAdmin();
+       TabelAdmin tblAdm = new TabelAdmin(listAdm);
+       Akuns.getTabelAdmin().setModel(tblAdm);
     }
 }

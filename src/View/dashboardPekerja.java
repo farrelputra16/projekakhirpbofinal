@@ -8,6 +8,8 @@ import Controller.ControllerAbsensiPekerja;
 import DAO.DAOAbsensi;
 import Model.Partisipan;
 import Model.TabelAktivitas;
+import static View.PerizinanPekerja.idPerizinan;
+import static View.PerizinanPekerja.namaPerizinan;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -275,7 +277,11 @@ public class dashboardPekerja extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDashboardPekerjaActionPerformed
 
     private void btnPerizinanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerizinanActionPerformed
-      // TODO add your handling code here:
+        this.namaLogin=namaPerizinan;
+        this.idLogin=idPerizinan;
+        PerizinanPekerja Pp = new PerizinanPekerja(namaPerizinan,idPerizinan);
+        Pp.setVisible(true);
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_btnPerizinanActionPerformed
 
     private void TabelAktivitasPekerjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelAktivitasPekerjaMouseClicked
@@ -284,6 +290,7 @@ public class dashboardPekerja extends javax.swing.JFrame {
             int idActivity = (int) TabelAktivitasPekerja.getValueAt(row, 0); // Assuming id_activity is in the first column
             System.out.println("ID Aktivitas: " + idActivity);
             ctDsPkr.IsiTabelPartisipan(idActivity);
+            btnAbsensi.setEnabled(false);
         }              
     }//GEN-LAST:event_TabelAktivitasPekerjaMouseClicked
 

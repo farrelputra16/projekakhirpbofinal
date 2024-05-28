@@ -1,35 +1,25 @@
 package Controller;
 
-import DAO.DAOAddAkunPekerja;
 import DAO.DAOLoginPekerja;
 import DAO.DAOPekerja;
 import DAOInterface.InterfaceDAOLoginPekerja;
 import DAOInterface.InterfaceDAOPekerja;
-import DAOInterface.InterfaceDAOTambahAkunPekerja;
 import Model.Pekerja;
 import View.LoginPage_pekerja;
-import View.AddAkunPekerja;
+import View.PerizinanPekerja;
 import View.dashboardAdmin;
 import javax.swing.JOptionPane;
-import DAOInterface.InterfaceDAOTambahAkunPekerja;
-import View.AddAkunAdmin;
 import View.dashboardPekerja;
 
 public class ControllerPekerja {
     LoginPage_pekerja pekerjaLogin;
-    AddAkunPekerja AddAkunPkr;
     dashboardAdmin dashA;
     InterfaceDAOPekerja IDAOPekerja;
     InterfaceDAOLoginPekerja ImpDAOPekerja;
-    InterfaceDAOTambahAkunPekerja IDAOTambahAkunPkr;
 
     public ControllerPekerja(LoginPage_pekerja pekerjaLogin) {
         this.pekerjaLogin = pekerjaLogin;
         this.ImpDAOPekerja = new DAOLoginPekerja();
-    }
-    public ControllerPekerja(AddAkunPekerja AddAkunPkr) {
-        this.AddAkunPkr = AddAkunPkr;
-        this.IDAOTambahAkunPkr = (InterfaceDAOTambahAkunPekerja) new DAOAddAkunPekerja();
     }
     
     public ControllerPekerja(dashboardAdmin dashA) {
@@ -45,6 +35,7 @@ public class ControllerPekerja {
             // Redirect to dashboard or another view
             new dashboardPekerja(nama,id).setVisible(true);
             pekerjaLogin.dispose();
+            new PerizinanPekerja(nama,id);
         }
     }
     

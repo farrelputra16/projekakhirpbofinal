@@ -9,7 +9,6 @@ import controller.ControllerDashboard;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import View.DetailAktivitas;
 
 /**
  *
@@ -21,7 +20,6 @@ public class dashboardAdmin extends javax.swing.JFrame {
      * Creates new form dashboardAdmin
      */
     ControllerDashboard ctDs;
-    DetailAktivitas da;
     ControllerPekerja ctPkr;
     
     public dashboardAdmin() {
@@ -337,7 +335,7 @@ public class dashboardAdmin extends javax.swing.JFrame {
     // TODO add your handling code here:
 
     private void btnAktivitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAktivitasActionPerformed
-        TambahAktivitas Aa =  new TambahAktivitas();
+        AktivitasAwal Aa =  new AktivitasAwal();
         Aa.setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_btnAktivitasActionPerformed

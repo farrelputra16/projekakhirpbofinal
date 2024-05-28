@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import Connector.KoneksiDB;
 import Model.Admin;
+import Model.Aktivitas;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DAOAdmin implements InterfaceDAOAdmin {
     Connection c;
@@ -38,4 +42,22 @@ public class DAOAdmin implements InterfaceDAOAdmin {
             return false;
         }
     }
+
+    @Override
+    public List<Admin> getAllAdmin() {
+    List<Admin> listAdm = null;
+    String readAdmin = "SELECT * FROM admin";
+       try{
+            listAdm = new ArrayList<Admin>();
+            Statement st = c.createStatement();
+            ResultSet rs = st.executeQuery(readAdmin);
+            while (rs.next()){
+                Admin b = new Admin();
+                b.setnama(rs.getString("nama"));
+                listAdm.add(b);
+            }
+        } catch (SQLException ex){
+            System.out.println("ERROR!"+ex);
+        }
+        return listAdm;    }
 }
