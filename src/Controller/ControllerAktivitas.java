@@ -8,6 +8,7 @@ import DAO.DAOActivity;
 import DAOInterface.InterfaceDAOActivity;
 import Model.Aktivitas;
 import Model.Partisipan;
+import Model.TabelAktivitas;
 import Model.TabelPartisipan;
 import View.DetailAktivitas;
 import View.AktivitasAwal;
@@ -24,20 +25,16 @@ import javax.swing.JSpinner;
  */
 public class ControllerAktivitas {
     DetailAktivitas detailA;
-    AktivitasAwal aktivitasA;
     TambahAktivitas AddAktv;
     InterfaceDAOActivity ImpDAOAktivitas;
     List<Partisipan> listPrts;
+    List<Aktivitas> ListAktv;
     
     public ControllerAktivitas(DetailAktivitas detailA){
         this.detailA = detailA;
         this.ImpDAOAktivitas = new DAOActivity();
     }
     
-    public ControllerAktivitas(AktivitasAwal aktvitasA){
-        this.aktivitasA = aktivitasA;
-        this.ImpDAOAktivitas = new DAOActivity();   
-    }
     
     public ControllerAktivitas(TambahAktivitas AddAktv){
         this.AddAktv = AddAktv;
@@ -62,17 +59,6 @@ public class ControllerAktivitas {
     
    }
    
-   public void read_da2() {
-    Aktivitas aktivitas = new Aktivitas();
-    ImpDAOAktivitas.activity(aktivitas);
-    aktivitasA.gettxtNamaAktivitas().setText(aktivitas.getnama_aktivitas());
-    aktivitasA.gettxtJamMulai().setValue(new Date());
-    ((JSpinner.DefaultEditor) aktivitasA.gettxtJamMulai().getEditor()).getTextField().setText(aktivitas.getjam_mulai());
-
-    aktivitasA.gettxtJamSelesai().setValue(new Date());
-    ((JSpinner.DefaultEditor) aktivitasA.gettxtJamSelesai().getEditor()).getTextField().setText(aktivitas.getjam_selesai());
-    
-   }
 
    public void search_partisipan(){
         listPrts = ImpDAOAktivitas.searchPartisipan(detailA.gettxtCariPekerja().getText());
